@@ -1,0 +1,90 @@
+CREATE TABLE IF NOT EXISTS `ve_categories` (
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `pos` tinyint(3) unsigned NOT NULL DEFAULT '1',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `ve_media` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `hour` varchar(255) NOT NULL,
+  `resultat` varchar(255) NOT NULL,
+  `choix1n2` varchar(255) NOT NULL,
+  `media_desc` varchar(150) NOT NULL,
+  `content` text NOT NULL,
+  `cote` decimal(11,2) NOT NULL,
+  `media_type` tinyint(3) unsigned DEFAULT NULL,
+  `thumbnail` varchar(255) DEFAULT NULL,
+  `uid` bigint(20) unsigned NOT NULL,
+  `cid` smallint(5) unsigned NOT NULL,
+  `slug_url` varchar(255) NOT NULL,
+  `like_count` int(11) unsigned NOT NULL DEFAULT '0',
+  `comment_count` int(11) unsigned NOT NULL DEFAULT '0',
+  `time_created` int(11) unsigned NOT NULL,
+  `status` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `page_content` text NOT NULL,
+  `vip` int(11) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `ve_media_likes` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `mid` bigint(20) unsigned NOT NULL,
+  `sid` varchar(128) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `ve_news` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titre` varchar(255) NOT NULL,
+  `news` varchar(255) NOT NULL,
+  `date` int(11) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `ve_settings` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `site_name` varchar(255) DEFAULT 'YourWebsite',
+  `site_title` varchar(150) DEFAULT 'YourWebsite | Your Website Description',
+  `site_desc` varchar(255) DEFAULT 'Your Website Description',
+  `display_count` int(11) unsigned DEFAULT '100000',
+  `site_dir` varchar(255) DEFAULT NULL,
+  `max_media_img_size` int(11) unsigned DEFAULT '1',
+  `isPreapproved` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `canCreatebet` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `facebook` varchar(128) DEFAULT NULL,
+  `twitter` varchar(128) DEFAULT NULL,
+  `youtube` varchar(128) DEFAULT NULL,
+  `user_registration` tinyint(1) UNSIGNED NOT NULL DEFAULT '1',
+  `profile_img_size` int(11) unsigned DEFAULT NULL,
+  `site_domain` varchar(255) NOT NULL,
+  `slides` text,
+  `sidebar_ad` text,
+  `footer_ad` text,
+  `footer_ad2` text,
+  `amount_vip` varchar(255) NOT NULL,
+  `method_vip` varchar(255) NOT NULL,
+  `mail_receive_payment_vip` varchar(255) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `ve_users` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(128) NOT NULL,
+  `pass` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `upl_dir` varchar(132) NOT NULL,
+  `login_token` varchar(255) DEFAULT NULL,
+  `location` varchar(128) DEFAULT NULL,
+  `gender` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `about` text,
+  `profile_img` varchar(255) NOT NULL DEFAULT 'default-profile.png',
+  `points` int(11) unsigned NOT NULL DEFAULT '0',
+  `status` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `display_name` varchar(255) NOT NULL,
+  `time_joined` int(11) unsigned NOT NULL DEFAULT '0',
+  `isAdmin` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `isVip` tinyint(1) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
